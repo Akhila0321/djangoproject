@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12">
+    <img src="{% static 'images/online.jpg' %}" height="400px" width="100%">
+</div></div>
+<div class="row mt-3 px-3" style="margin-bottom:100px;">
+    <div class="col-12">
+        <h3 class="text-center fw-bold  mt-4 mb-4">Our Collections</h3>
+        <p style="text-align:justify;line-height:2.0;" class="fs-5">E-Commerce or Electronic Commerce means buying and selling of goods, products, or services over the internet. E-commerce is also known as electronic commerce or internet commerce. These services provided online over the internet network. Transaction of money, funds, and data are also considered as E-commerce. These business transactions can be done in four ways: Business to Business (B2B), Business to Customer (B2C), Customer to Customer (C2C), Customer to Business (C2B). The standard definition of E-commerce is a commercial transaction which is happened over the internet. Online stores like Amazon, Flipkart, Shopify, Myntra, Ebay, Quikr, Olx are examples of E-commerce websites. By 2020, global retail e-commerce can reach up to $27 Trillion.</p>
+        </div>
+     </div>
+
+
+<div class="container mt-4 mb-5">
+    <div class="row mb-5">
+        {% for i in cat %}
+        <div class="col-sm-3">
+            <div class="card mx-auto" style="width: 20rem;">
+  <img src="{{i.image.url}}" class="card-img-top" alt="..." height="250px" width="250px">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{i.name}}</h5>
+    <a href="{% url 'shop:products' i.id %}" class="btn btn-success">Products</a>
+  </div>
+</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

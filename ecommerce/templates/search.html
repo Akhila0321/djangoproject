@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 mb-4">
+    <h3 class="text-center">You have searched for <span class="text-center">{{q}}</span></h3>
+</div>
+<div class="container mt-5 mb-4">
+    {% if product == None %}
+    <h5 class="text-center">No Results Found</h5>
+    {% else %}
+    <div class="row">
+        {% for i in product %}
+        <div class="col-sm-4">
+            <div class="card mx-auto border border-3 border-light" style="width: 20rem;" >
+  <img src="{{i.image.url}}" class="card-img-top" alt="..." height="200px" width="100%">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{i.name}}</h5>
+      <p class="card-title">{{i.price}}</p>
+    <a href="{% url 'shop:details' i.id %}" class="btn btn-success">Details</a>
+  </div>
+</div>
+        </div>
+        {% empty %}
+        <h5 class="text-center">No Results Found</h5>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

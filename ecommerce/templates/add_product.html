@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 class="text-center mb-3 mt-3">Add Product</h2>
+<div class="container mx-auto">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" class="form-control" name="t" placeholder="Enter the product name">
+    </div>
+
+    <div class="mb-3">
+    <label class="form-label">Description</label>
+     <input type="text" class="form-control" name="r" placeholder="Enter the description">
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Image</label>
+    <input type="file" class="form-control" name="m">
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Price</label>
+     <input type="number" class="form-control" name="p" placeholder="Enter the price">
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Stock</label>
+     <input type="number" class="form-control" name="s" placeholder="Enter the stock">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select name="c" id="category" class="form-select">
+            <option value="">Select Category</option>
+            {% for i in links %}
+                <option value="{{ i.name }}">{{ i.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-5">
+    <input type="submit" value="ADD">
+    </div>
+</form>
+    </div>
+{% endblock %}
